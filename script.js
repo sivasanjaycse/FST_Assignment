@@ -41,8 +41,6 @@ const courses = [
     progress: 0
   }
 ];
-
-// DOM Elements
 const loginPage = document.getElementById('login-page');
 const dashboardPage = document.getElementById('dashboard-page');
 const loginForm = document.getElementById('login-form');
@@ -56,19 +54,14 @@ const logoutButton = document.getElementById('logout-btn');
 
 let currentUser = null;
 
-// Handle login form submission
 loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
   
   const username = usernameInput.value;
   const password = passwordInput.value;
-
-  // Check if the user exists
   const user = users.find(u => u.username === username && u.password === password);
-
   if (user) {
     currentUser = user;
-    // Hide login page, show dashboard
     loginPage.style.display = 'none';
     dashboardPage.style.display = 'block';
     userNameDisplay.textContent = user.name;
@@ -79,23 +72,12 @@ loginForm.addEventListener('submit', function (e) {
     showNotification('Invalid username or password', 'error');
   }
 });
-
-// Update dashboard with user data
 function updateDashboard() {
-  // Populate course list
   populateCourses();
-
-  // Set initial attendance
   populateAttendance();
-
-  // Set up certificate tracking
   populateCertificates();
-
-  // Update stats
   updateStats();
 }
-
-// Populate courses with new card design
 function populateCourses() {
   courseList.innerHTML = '';
   courses.forEach(course => {
@@ -125,8 +107,6 @@ function populateCourses() {
     courseList.appendChild(courseCard);
   });
 }
-
-// Update dashboard stats
 function updateStats() {
   const statsNumbers = document.querySelectorAll('.stat-number');
   statsNumbers[0].textContent = currentUser.enrolledCourses.length;
@@ -143,12 +123,10 @@ function enrollCourse(courseName) {
   }
 }
 
-// Start or continue a course
 function startCourse(courseName) {
   showNotification(`Loading course: ${courseName}`, 'info');
 }
 
-// Populate attendance with improved design
 function populateAttendance() {
   attendanceList.innerHTML = '';
   currentUser.enrolledCourses.forEach(course => {
@@ -165,7 +143,6 @@ function populateAttendance() {
   });
 }
 
-// Populate certificates with improved design
 function populateCertificates() {
   certificateList.innerHTML = '';
   currentUser.completedCourses.forEach(course => {
@@ -185,12 +162,10 @@ function populateCertificates() {
   });
 }
 
-// Download certificate (simulated)
 function downloadCertificate(courseName) {
   showNotification(`Downloading certificate for: ${courseName}`, 'info');
 }
 
-// Show notification
 function showNotification(message, type = 'info') {
   const notification = document.createElement('div');
   notification.className = `notification ${type} fade-in`;
@@ -202,19 +177,12 @@ function showNotification(message, type = 'info') {
   }, 3000);
 }
 
-// Handle logout
 logoutButton.addEventListener('click', function() {
-  // Clear form inputs
   loginForm.reset();
-  
-  // Reset current user
   currentUser = null;
-  
-  // Hide dashboard, show login page
   dashboardPage.style.display = 'none';
   loginPage.style.display = 'block';
-  
-  // Clear all lists
+
   courseList.innerHTML = '';
   attendanceList.innerHTML = '';
   certificateList.innerHTML = '';
