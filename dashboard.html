@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div id="dashboard-page" class="container">
+    <div class="dashboard-header fade-in">
+      <div>
+        <h2><i class="fas fa-user-graduate"></i> Welcome <span id="user-name"></span></h2>
+        <p>Your Learning Dashboard</p>
+      </div>
+      <button id="logout-btn" class="logout-button"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- Dashboard Stats -->
+    <div class="dashboard-stats fade-in">
+      <div class="stat-card">
+        <h3><i class="fas fa-book"></i> Enrolled Courses</h3>
+        <p class="stat-number">3</p>
+        <div class="progress-bar">
+          <div class="progress-bar-fill" style="width: 60%;"></div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <h3><i class="fas fa-clock"></i> Total Hours</h3>
+        <p class="stat-number">24</p>
+      </div>
+      <div class="stat-card">
+        <h3><i class="fas fa-certificate"></i> Certificates</h3>
+        <p class="stat-number">2</p>
+      </div>
+    </div>
+
+    <!-- Courses Section -->
+    <div id="courses" class="fade-in">
+      <h3><i class="fas fa-laptop-code"></i> Your Courses</h3>
+      <div class="course-grid" id="course-list">
+        <!-- Course list will be dynamically populated -->
+      </div>
+    </div>
+
+    <!-- Attendance Section -->
+    <div id="attendance" class="fade-in">
+      <h3><i class="fas fa-calendar-check"></i> Attendance Tracking</h3>
+      <ul id="attendance-list">
+        <!-- Attendance will be tracked here -->
+      </ul>
+    </div>
+
+    <!-- Certification Section -->
+    <div id="certification" class="fade-in">
+      <h3><i class="fas fa-award"></i> Your Certificates</h3>
+      <ul id="certificate-list">
+        <!-- Certifications will be shown here -->
+      </ul>
+    </div>
+
+    <!-- Upcoming Events -->
+    <div id="upcoming-events" class="fade-in">
+      <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+      <div class="course-grid">
+        <div class="course-card">
+          <h4>Web Development Workshop</h4>
+          <p><i class="fas fa-clock"></i> Tomorrow, 2:00 PM</p>
+          <button class="btn-primary" data-event="Web Development Workshop" onclick="joinEvent('Web Development Workshop')">
+            <i class="fas fa-users"></i> Join Event
+          </button>
+        </div>
+        <div class="course-card">
+          <h4>JavaScript Advanced Topics</h4>
+          <p><i class="fas fa-clock"></i> Friday, 3:30 PM</p>
+          <button class="btn-primary" data-event="JavaScript Advanced Topics" onclick="joinEvent('JavaScript Advanced Topics')">
+            <i class="fas fa-users"></i> Join Event
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html> 
