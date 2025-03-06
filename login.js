@@ -28,9 +28,7 @@ loginForm.addEventListener('submit', function (e) {
   const username = usernameInput.value;
   const password = passwordInput.value;
   const user = users.find(u => u.username === username && u.password === password);
-
   if (user) {
-    // Store user data in sessionStorage
     sessionStorage.setItem('currentUser', JSON.stringify(user));
     showNotification('Login successful! Redirecting...', 'success');
     setTimeout(() => {
